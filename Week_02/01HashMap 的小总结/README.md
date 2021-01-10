@@ -4,20 +4,31 @@ Java为数据结构中的映射定义了一个接口java.util.Map，此接口主
 
 各个实现类的特点说明：
 (1) HashMap：它根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。HashMap非线程安全，如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。
+
 (2) Hashtable：Hashtable是遗留类，很多映射的常用功能与HashMap类似，不同的是它承自Dictionary类，并且是线程安全的，但并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁，需要线程安全的场合使用ConcurrentHashMap。
+
 (3) LinkedHashMap：LinkedHashMap是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。
+
 (4) TreeMap：TreeMap实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是排过序的。如果使用排序的映射，建议使用TreeMap。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。
 
 2. HashMap 内部的一些主要特点：
+
 使用哈希表（散列表）来进行数据存储，并使用链地址法来解决冲突
+
 当链表长度大于等于 8 时，将链表转换为红黑树来存储
+
 每次进行二次幂的扩容，即扩容为原容量的两倍
 
 3.HashMap字段：
+
 Node[] table：存储数据的哈希表；初始长度 length = 16（DEFAULT_INITIAL_CAPACITY），扩容时容量为原先的两倍（n * 2）。
+
 final float loadFactor：负载因子，默认loadFactor = 0.75（DEFAULT_LOAD_FACTO），确定数组长度与当前所能存储的键值对最大值的关系。
+
 int threshold：所能容纳的 key-value 对极限 ；threshold = length * Load factor，当存在的键值对大于该值，则进行扩容。
+
 int modCount：HashMap 结构修改次数，如每次put、remove 时自增 1。
+
 int size：当前 key-value 个数。
 
 4.HashMap方法：	
