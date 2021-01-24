@@ -1,6 +1,7 @@
 1、学习深度优先搜索、广度优先搜索的实现和特性
 DFS代码模板:
 // Java
+
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> allResults = new ArrayList<>();
         if(root==null){
@@ -24,6 +25,7 @@ DFS代码模板:
 
 BSF代码模板：
 // Java
+
 	public class TreeNode {
 		int val;
 		TreeNode left;
@@ -60,6 +62,7 @@ BSF代码模板：
 2、学习二分查找的实现、特性
 
 // Java
+
 	public int binarySearch(int[] array, int target) {
 		int left = 0, right = array.length - 1, mid;
 		while (left <= right) {
@@ -82,6 +85,8 @@ BSF代码模板：
         b1.如果中值属于左边升序范围内，且target在这个范围内，则查找左半部分，否则查找右半部分
         b2.否则，如果处于右边升序的部分，并且target在这个范围内，则查找右半部分，否则在左半部分中查找
 // Java
+
+
 class Solution {
     public int search(int[] nums, int target) {
         if(null == nums || nums.length == 0){
