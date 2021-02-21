@@ -74,6 +74,8 @@
 代码模板
 
 //Java
+
+
 class Trie {
     private boolean isEnd;
     private Trie[] next;
